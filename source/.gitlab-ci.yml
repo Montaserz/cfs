@@ -1,0 +1,23 @@
+image: openjdk:8-jdk
+
+before_script:
+ - apt-get --quiet update --yes
+ - apt-get --quiet install --yes maven
+
+stages:
+ - build
+ - test
+
+build:
+ stage: build
+ script: 
+  - echo "Building.."
+  - mvn clean compile
+  - mvn install -DskipTests -U
+
+test:
+ stage: test
+ script: 
+  - echo "Testing.."
+  - mvn dependency::tree
+  - mvn test

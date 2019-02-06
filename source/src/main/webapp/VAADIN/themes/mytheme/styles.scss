@@ -1,0 +1,24 @@
+@import "mytheme.scss";
+@import "addons.scss";
+@import "../valo/valo";
+
+// This file prefixes all rules with the theme name to avoid causing conflicts with other themes.
+// The actual styles should be defined in mytheme.scss
+
+.mytheme {
+  @include addons;
+  @include mytheme;
+  @include valo;
+  
+  .v-datefield-calendarpanel-day.invalid {
+    @extend .v-datefield-calendarpanel-day.v-datefield-calendarpanel-day-outside-range;
+    background-color: #fcdede;
+    pointer-events: none;
+  }
+  
+  .v-datefield-calendarpanel-day.valid {
+    @extend .v-datefield-calendarpanel-day.v-datefield-calendarpanel-day-today;
+    background-color: #defcde;
+  }
+
+}
